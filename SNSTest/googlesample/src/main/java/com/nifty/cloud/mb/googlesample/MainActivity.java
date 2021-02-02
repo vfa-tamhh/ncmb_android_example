@@ -6,22 +6,26 @@ import android.accounts.AccountManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.UserRecoverableAuthException;
-import com.nifty.cloud.mb.core.NCMB;
-import com.nifty.cloud.mb.core.NCMBException;
-import com.nifty.cloud.mb.core.NCMBGoogleParameters;
-import com.nifty.cloud.mb.core.NCMBUser;
+import com.nifcloud.mbaas.core.NCMB;
+import com.nifcloud.mbaas.core.NCMBException;
+import com.nifcloud.mbaas.core.NCMBGoogleParameters;
+import com.nifcloud.mbaas.core.NCMBUser;
+
 
 import java.io.IOException;
 
@@ -44,9 +48,21 @@ public class MainActivity extends AppCompatActivity {
         );
 
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                getGoogleToken();
+                if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                        Manifest.permission.GET_ACCOUNTS)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = AccountManager.newChooseAccountIntent(null
+                            , null
+                            , new String[]{"com.google"}
+                            , null
+                            , null
+                            , null
+                            , null);
+                    startActivityForResult(intent, REQUEST_SIGN_IN);
+                }
             }
         });
 
@@ -65,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                           int[] grantResults)
-    {
+                                           int[] grantResults) {
         switch (requestCode) {
             case 1: {
                 // If request is cancelled, the result arrays are empty.
@@ -82,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getGoogleToken() {
 
-        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String> () {
+        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... accounts) {
 
@@ -128,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_SIGN_IN && resultCode == RESULT_OK) {
             getGoogleToken();
         }

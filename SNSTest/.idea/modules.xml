@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SNSTest.iml" filepath="$PROJECT_DIR$/SNSTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/facebooksample/facebooksample.iml" filepath="$PROJECT_DIR$/facebooksample/facebooksample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/googlesample/googlesample.iml" filepath="$PROJECT_DIR$/googlesample/googlesample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../ncmb-core/ncmb-core.iml" filepath="$PROJECT_DIR$/../../ncmb-core/ncmb-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/twittersample/twittersample.iml" filepath="$PROJECT_DIR$/twittersample/twittersample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SNSTest.iml" filepath="$PROJECT_DIR$/.idea/SNSTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SNSTest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SNSTest.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facebooksample/SNSTest.facebooksample.iml" filepath="$PROJECT_DIR$/.idea/modules/facebooksample/SNSTest.facebooksample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/googlesample/SNSTest.googlesample.iml" filepath="$PROJECT_DIR$/.idea/modules/googlesample/SNSTest.googlesample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/twittersample/SNSTest.twittersample.iml" filepath="$PROJECT_DIR$/.idea/modules/twittersample/SNSTest.twittersample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/439368312/ncmb_android.SNSTest.ncmb-core.iml" filepath="$PROJECT_DIR$/.idea/modules/439368312/ncmb_android.SNSTest.ncmb-core.iml" />
     </modules>
   </component>
 </project>
